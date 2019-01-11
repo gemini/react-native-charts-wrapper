@@ -231,7 +231,6 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
         let json = BridgeUtils.toJson(config)
 
         let xAxis = chart.xAxis;
-        xAxis.labelFont = UIFont(name: "GothamSSm-Book", size: UIFont.labelFontSize);
 
         setCommonAxisConfig(xAxis, config: json)
 
@@ -283,6 +282,8 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
         if config["textSize"].float != nil {
             axis.labelFont = axis.labelFont.withSize(CGFloat(config["textSize"].floatValue))
         }
+
+        axis.labelFont = UIFont(name: "GothamSSm-Book", size: 10)!
 
         if config["gridColor"].int != nil {
             axis.gridColor = RCTConvert.uiColor(config["gridColor"].intValue)

@@ -309,16 +309,13 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
             axis.setDrawGridLines(propMap.getBoolean("drawGridLines"));
         }
 
+        axis.setTypeface(TypefaceUtils.getTypeface(chart, propMap));
+
         // style
         if (BridgeUtils.validate(propMap, ReadableType.Number, "textColor")) {
             axis.setTextColor(propMap.getInt("textColor"));
         }
-        if (BridgeUtils.validate(propMap, ReadableType.Number, "textSize")) {
-            axis.setTextSize((float) propMap.getDouble("textSize"));
-        }
-        if (BridgeUtils.validate(propMap, ReadableType.String, "fontFamily")) {
-            axis.setTypeface(TypefaceUtils.getTypeface(chart, propMap));
-        }
+
         if (BridgeUtils.validate(propMap, ReadableType.Number, "gridColor")) {
             axis.setGridColor(propMap.getInt("gridColor"));
         }

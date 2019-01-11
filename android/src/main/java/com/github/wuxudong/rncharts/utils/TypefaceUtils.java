@@ -13,7 +13,7 @@ import com.github.mikephil.charting.charts.Chart;
 
 public class TypefaceUtils {
     public static Typeface getTypeface(Chart chart, ReadableMap propMap) {
-        String fontFamily = propMap.getString("fontFamily");
+        String fontFamily = "GothamSSm-Book";
         boolean italic = false;
         boolean bold = false;
         int style = Typeface.NORMAL;
