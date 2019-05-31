@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.content.res.ResourcesCompat;
 import android.text.TextUtils;
 import android.widget.TextView;
+import android.graphics.Typeface;
 
 import com.facebook.react.views.text.ReactFontManager;
 import com.github.mikephil.charting.charts.Chart;
