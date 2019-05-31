@@ -36,6 +36,8 @@ public class RNRectangleMarkerView extends MarkerView {
         super(context, R.layout.rectangle_marker);
 
         tvContent = (TextView) findViewById(R.id.rectangle_tvContent);
+        Typeface typeface = ReactFontManager.getInstance().getTypeface("GothamSSm-Book", Typeface.NORMAL, context.getAssets());
+        tvContent.setTypeface(typeface);
     }
 
     public void setDigits(int digits) {
