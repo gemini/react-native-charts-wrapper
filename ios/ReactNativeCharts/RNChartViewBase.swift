@@ -437,11 +437,7 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
             return
         }
 
-        var markerFont = UIFont(name: "GothamSSm-Book", size: 12)!
-
-        if json["textSize"].float != nil {
-            markerFont = markerFont.withSize(CGFloat(json["textSize"].floatValue))
-        }
+        var markerFont = UIFont(name: "GothamSSm-Bold", size: 12)!
 
 
         // TODO fontFamily, fontStyle
