@@ -24,21 +24,13 @@ public class RNRectangleMarkerView extends MarkerView {
 
     private TextView tvContent;
 
-    private Drawable backgroundLeft = ResourcesCompat.getDrawable(getResources(), R.drawable.rectangle_marker_left, null);
-    private Drawable background = ResourcesCompat.getDrawable(getResources(), R.drawable.rectangle_marker, null);
-    private Drawable backgroundRight = ResourcesCompat.getDrawable(getResources(), R.drawable.rectangle_marker_right, null);
-
-    private Drawable backgroundTopLeft = ResourcesCompat.getDrawable(getResources(), R.drawable.rectangle_marker_top_left, null);
-    private Drawable backgroundTop = ResourcesCompat.getDrawable(getResources(), R.drawable.rectangle_marker_top, null);
-    private Drawable backgroundTopRight = ResourcesCompat.getDrawable(getResources(), R.drawable.rectangle_marker_top_right, null);
-
     private int digits = 0;
 
     public RNRectangleMarkerView(Context context) {
         super(context, R.layout.rectangle_marker);
 
         tvContent = (TextView) findViewById(R.id.rectangle_tvContent);
-        Typeface typeface = ReactFontManager.getInstance().getTypeface("GothamSSm-Book", Typeface.NORMAL, context.getAssets());
+        Typeface typeface = ReactFontManager.getInstance().getTypeface("GothamSSm-Bold", Typeface.NORMAL, context.getAssets());
         tvContent.setTypeface(typeface);
     }
 
@@ -104,9 +96,6 @@ public class RNRectangleMarkerView extends MarkerView {
 
             if (posY + offset2.y < 0) {
                 offset2.y = 0;
-                tvContent.setBackground(backgroundTopLeft);
-            } else {
-                tvContent.setBackground(backgroundLeft);
             }
 
         } else if (chart != null && posX + width + offset2.x > chart.getWidth()) {
@@ -114,16 +103,10 @@ public class RNRectangleMarkerView extends MarkerView {
 
             if (posY + offset2.y < 0) {
                 offset2.y = 0;
-                tvContent.setBackground(backgroundTopRight);
-            } else {
-                tvContent.setBackground(backgroundRight);
             }
         } else {
             if (posY + offset2.y < 0) {
                 offset2.y = 0;
-                tvContent.setBackground(backgroundTop);
-            } else {
-                tvContent.setBackground(background);
             }
         }
 
