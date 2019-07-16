@@ -16,6 +16,7 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.wuxudong.rncharts.R;
+import android.graphics.Canvas;
 
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,11 @@ public class RNRectangleMarkerView extends MarkerView {
 
     public void setDigits(int digits) {
         this.digits = digits;
+    }
+
+    @Override
+    public void draw(Canvas canvas, float posX, float posY) {
+        super.draw(canvas, posX, 0);
     }
 
     @Override
