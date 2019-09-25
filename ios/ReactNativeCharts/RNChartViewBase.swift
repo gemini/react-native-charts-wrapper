@@ -16,6 +16,9 @@ import SwiftyJSON
 open class RNChartViewBase: UIView, ChartViewDelegate {
     open var onSelect:RCTBubblingEventBlock?
 
+    open var onPanStart:RCTBubblingEventBlock?
+    open var onPanEnd:RCTBubblingEventBlock?
+
     open var onChange:RCTBubblingEventBlock?
 
     private var group: String?

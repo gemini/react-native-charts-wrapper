@@ -33,9 +33,22 @@ class RNLineChartView: RNBarLineChartViewBase {
     }
     
     func handlePan(_ recognizer: UIPanGestureRecognizer) {
-        self.chart.drawMarkers = recognizer.state != .ended
-        self.chart.data?.highlightEnabled = recognizer.state != .ended
-        self.chart.notifyDataSetChanged()
+        if (recognizer.state == .began) {
+            self.chart.drawMarkers = true
+            self.chart.data?.highlightEnabled = true
+            if (self.onPanStart != nil) {
+                self.onPanStart!(nil)
+             }
+            self.chart.notifyDataSetChanged()
+        }else if (recognizer.state == .ended) {
+            self.chart.drawMarkers = recognizer.state != .ended
+            self.chart.data?.highlightEnabled = recognizer.state != .ended
+            if (self.onPanEnd != nil) {
+                self.onPanEnd!(nil)
+            }
+            self.chart.notifyDataSetChanged()
+        }
+
     }
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
