@@ -46,10 +46,20 @@ public class RNOnChartGestureListener implements OnChartGestureListener {
 
     @Override
     public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+        Chart chart = mWeakChart.get();
+        if (chart != null) {
+            chart.setDrawMarkers(true);
+            chart.getData().setHighlightEnabled(true);
+        }
     }
 
     @Override
     public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+        Chart chart = mWeakChart.get();
+        if (chart != null) {
+            chart.setDrawMarkers(false);
+            chart.getData().setHighlightEnabled(false);
+        }
     }
 
     @Override
