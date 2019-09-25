@@ -11,6 +11,7 @@ import com.github.wuxudong.rncharts.data.DataExtract;
 import com.github.wuxudong.rncharts.data.LineDataExtract;
 import com.github.wuxudong.rncharts.listener.RNOnChartValueSelectedListener;
 import com.github.wuxudong.rncharts.listener.RNOnChartGestureListener;
+import java.util.Map;
 
 public class LineChartManager extends BarLineChartBaseManager<LineChart, Entry> {
 
