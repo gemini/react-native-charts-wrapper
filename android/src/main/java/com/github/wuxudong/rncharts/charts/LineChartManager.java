@@ -1,5 +1,8 @@
 package com.github.wuxudong.rncharts.charts;
 
+import android.support.annotation.Nullable;
+
+import com.facebook.react.common.MapBuilder;
 
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.github.mikephil.charting.charts.LineChart;
@@ -14,6 +17,16 @@ public class LineChartManager extends BarLineChartBaseManager<LineChart, Entry> 
     @Override
     public String getName() {
         return "RNLineChart";
+    }
+
+    @Override
+    public @Nullable Map getExportedCustomDirectEventTypeConstants() {
+        return MapBuilder.of(
+            "onPanStart",
+            MapBuilder.of("registrationName", "onPanStart"),
+            "onPanEnd",
+            MapBuilder.of("registrationName", "onPanEnd")
+            );
     }
 
     @Override

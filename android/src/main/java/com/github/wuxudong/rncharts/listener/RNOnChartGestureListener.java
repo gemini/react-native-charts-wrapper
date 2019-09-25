@@ -50,6 +50,10 @@ public class RNOnChartGestureListener implements OnChartGestureListener {
         if (chart != null) {
             chart.setDrawMarkers(true);
             chart.getData().setHighlightEnabled(true);
+            WritableMap event = Arguments.createMap();
+
+            ReactContext reactContext = (ReactContext) chart.getContext();
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(chart.getId(), "onPanStart", event);
         }
     }
 
@@ -59,6 +63,10 @@ public class RNOnChartGestureListener implements OnChartGestureListener {
         if (chart != null) {
             chart.setDrawMarkers(false);
             chart.getData().setHighlightEnabled(false);
+            WritableMap event = Arguments.createMap();
+
+            ReactContext reactContext = (ReactContext) chart.getContext();
+            reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(chart.getId(), "onPanEnd", event);
         }
     }
 
