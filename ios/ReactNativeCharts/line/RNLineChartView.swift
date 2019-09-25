@@ -5,7 +5,7 @@
 import Charts
 import SwiftyJSON
 
-class RNLineChartView: RNBarLineChartViewBase {
+class RNLineChartView: RNBarLineChartViewBase, UIGestureRecognizerDelegate {
     let _chart: LineChartView;
     let _dataExtract : LineDataExtract;
     
