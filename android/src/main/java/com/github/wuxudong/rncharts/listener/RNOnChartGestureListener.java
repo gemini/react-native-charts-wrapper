@@ -49,7 +49,6 @@ public class RNOnChartGestureListener implements OnChartGestureListener {
         Chart chart = mWeakChart.get();
         if (chart != null) {
             chart.setDrawMarkers(true);
-            chart.getData().setHighlightEnabled(true);
             WritableMap event = Arguments.createMap();
 
             ReactContext reactContext = (ReactContext) chart.getContext();
@@ -62,7 +61,6 @@ public class RNOnChartGestureListener implements OnChartGestureListener {
         Chart chart = mWeakChart.get();
         if (chart != null) {
             chart.setDrawMarkers(false);
-            chart.getData().setHighlightEnabled(false);
             WritableMap event = Arguments.createMap();
 
             ReactContext reactContext = (ReactContext) chart.getContext();
