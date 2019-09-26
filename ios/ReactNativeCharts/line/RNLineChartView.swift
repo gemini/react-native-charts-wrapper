@@ -25,14 +25,15 @@ class RNLineChartView: RNBarLineChartViewBase, UIGestureRecognizerDelegate {
         super.init(frame: frame);
 
         self._chart.delegate = self
-        let recognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        let recognizer = BetterPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         recognizer.delegate = self
+
         self._chart.addGestureRecognizer(recognizer)
         self.addSubview(_chart);
 
     }
 
-    func handlePan(_ recognizer: UIPanGestureRecognizer) {
+    func handlePan(_ recognizer: BetterPanGestureRecognizer) {
         if (recognizer.state == .began) {
             self.chart.drawMarkers = true
             if (self.onPanStart != nil) {
@@ -56,5 +57,32 @@ class RNLineChartView: RNBarLineChartViewBase, UIGestureRecognizerDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+}
+
+class BetterPanGestureRecognizer: UIPanGestureRecognizer, UIGestureRecognizerDelegate {
+
+  var initialTouchLocation: CGPoint!
+
+  override init(target: Any?, action: Selector?) {
+    super.init(target: target, action: action)
+    self.delegate = self
+  }
+
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+    super.touchesBegan(touches, with: event)
+    initialTouchLocation = touches.first!.location(in: view)
+  }
+
+  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+    super.touchesMoved(touches, with: event)
+    if self.state == .possible {
+      self.state = .changed
+    }
+  }
+
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    return true
+  }
 
 }
